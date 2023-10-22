@@ -1,6 +1,7 @@
 import 'package:custom_paint_exp/screens/custom_paint_exp.dart';
 import 'package:custom_paint_exp/screens/pac_man.dart';
 import 'package:custom_paint_exp/screens/progress_button.dart';
+import 'package:custom_paint_exp/screens/sponge_bob.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/face_animation.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const FaceAnimation(),
+      home: const SpongeBobCustomPaint(),
     );
   }
 }
