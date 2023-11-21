@@ -1,6 +1,8 @@
 import 'package:custom_paint_exp/screens/custom_paint_exp.dart';
 import 'package:custom_paint_exp/screens/pac_man.dart';
 import 'package:custom_paint_exp/screens/progress_button.dart';
+import 'package:custom_paint_exp/screens/render_gap.dart';
+import 'package:custom_paint_exp/screens/shimmer_effect.dart';
 import 'package:custom_paint_exp/screens/sponge_bob.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SpongeBobCustomPaint(),
+      home: const ShimmerEffect(),
     );
   }
 }
