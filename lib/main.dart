@@ -1,4 +1,5 @@
 import 'package:custom_paint_exp/screens/custom_paint_exp.dart';
+import 'package:custom_paint_exp/screens/face_painting.dart';
 import 'package:custom_paint_exp/screens/pac_man.dart';
 import 'package:custom_paint_exp/screens/progress_button.dart';
 import 'package:custom_paint_exp/screens/render_gap.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const ShimmerEffect(),
+      home: const FacePainting(),
     );
   }
 }
