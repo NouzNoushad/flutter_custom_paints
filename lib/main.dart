@@ -5,6 +5,7 @@ import 'package:custom_paint_exp/screens/progress_button.dart';
 import 'package:custom_paint_exp/screens/render_gap.dart';
 import 'package:custom_paint_exp/screens/shimmer_effect.dart';
 import 'package:custom_paint_exp/screens/sponge_bob.dart';
+import 'package:custom_paint_exp/screens/ticket_design.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/face_animation.dart';
@@ -21,11 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const FacePainting(),
+      home: const TicketDesign(),
     );
   }
 }
