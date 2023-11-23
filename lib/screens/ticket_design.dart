@@ -4,16 +4,17 @@ class TicketDesign extends StatelessWidget {
   const TicketDesign({super.key});
 
   static List<Color> colors = [
-    Colors.orange,
+    Colors.red,
     Colors.teal,
     Colors.purple,
+    Colors.orange,
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade600,
+        backgroundColor: Colors.indigo.shade600,
         title: const Text(
           'Tickets',
           style: TextStyle(color: Colors.white),
@@ -165,12 +166,18 @@ class TicketDesign extends StatelessWidget {
                           height: MediaQuery.of(context).size.height * 0.25,
                           width: double.infinity,
                         )),
-                    // CustomPaint(
-                    //     painter: DottedPath(),
-                    //     child: SizedBox(
-                    //       height: MediaQuery.of(context).size.height * 0.25,
-                    //       width: double.infinity,
-                    //     )),
+                    CustomPaint(
+                        painter: DottedPath(),
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          width: double.infinity,
+                        )),
+                    CustomPaint(
+                        painter: DottedInitialPath(),
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          width: double.infinity,
+                        )),
                   ],
                 ),
               );
@@ -184,20 +191,47 @@ class TicketDesign extends StatelessWidget {
   }
 }
 
+class DottedInitialPath extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    double dashWidth = 3;
+    double dashSpace = 4;
+    double startY = 10;
+
+    final paint = Paint()
+      ..color = const Color.fromARGB(255, 170, 217, 241)
+      ..strokeWidth = 1;
+
+    while (startY < size.height - 10) {
+      canvas.drawCircle(Offset(0, startY), 2, paint);
+      startY += dashWidth + dashSpace;
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
 class DottedPath extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     double dashWidth = 3;
     double dashSpace = 4;
-    double startX = 10;
+    double startY = 10;
 
     final paint = Paint()
-      ..color = Colors.black
+      ..color = const Color.fromARGB(255, 170, 217, 241)
       ..strokeWidth = 1;
-    while (startX < size.width - 10) {
-      canvas.drawLine(Offset(startX, size.height / 1.5),
-          Offset(startX + dashWidth, size.height / 1.5), paint);
-      startX += dashWidth + dashSpace;
+    while (startY < size.height - 10) {
+      canvas.drawCircle(Offset(size.width / 5, startY), 2, paint);
+      startY += dashWidth + dashSpace;
+    }
+
+    while (startY < size.height - 10) {
+      canvas.drawCircle(Offset(10, startY), 2, paint);
+      startY += dashWidth + dashSpace;
     }
   }
 
