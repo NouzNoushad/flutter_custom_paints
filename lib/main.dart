@@ -1,3 +1,5 @@
+import 'package:custom_paint_exp/screens/clippers/dotted_cuts.dart';
+import 'package:custom_paint_exp/screens/clippers/my_ticket_clippers.dart';
 import 'package:custom_paint_exp/screens/clippers/point_clippers.dart';
 import 'package:custom_paint_exp/screens/clippers/rounded_clipper.dart';
 import 'package:custom_paint_exp/screens/custom_paint_exp.dart';
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const RoundedClipperDesign(),
+      home: const MyTicketClippers(),
     );
   }
 }

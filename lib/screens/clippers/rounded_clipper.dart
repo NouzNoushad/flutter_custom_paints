@@ -11,7 +11,8 @@ class RoundedClipperDesign extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
         child: ClipPath(
-          clipper: RoundedPointsClipper(edge: Edge.horizontal, points: 50),
+          clipper:
+              RoundedEdgeClipper(edge: Edge.horizontal, points: 20, depth: 20),
           child: Container(
             height: 200,
             width: 200,
@@ -26,8 +27,8 @@ class RoundedClipperDesign extends StatelessWidget {
 // My Custom Clipper
 enum Edge { vertical, horizontal, top, bottom, left, right, all }
 
-class RoundedPointsClipper extends CustomClipper<Path> {
-  RoundedPointsClipper({
+class RoundedEdgeClipper extends CustomClipper<Path> {
+  RoundedEdgeClipper({
     this.edge = Edge.bottom,
     this.points = 20,
     this.depth = 10,

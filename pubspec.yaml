@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   custom_clippers: ^2.0.0
   flutter_custom_clippers: ^2.1.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
