@@ -11,10 +11,13 @@ class MyTicketClippers extends StatelessWidget {
           child: ClipPath(
         clipper:
             TicketRoundedEdgeClipper(edge: Edge.all, position: 100, radius: 50),
-        child: Container(
-          height: 200,
-          width: 200,
-          color: Colors.red,
+        child: ClipPath(
+          clipper: PointedEdgeClipper(points: 60, edge: Edge.left, depth: 5),
+          child: Container(
+            height: 200,
+            width: 200,
+            color: Colors.red,
+          ),
         ),
       )),
     );
