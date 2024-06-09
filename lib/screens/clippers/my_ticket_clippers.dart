@@ -8,20 +8,81 @@ class MyTicketClippers extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-          child: ClipPath(
-        clipper:
-            TicketRoundedEdgeClipper(edge: Edge.all, position: 100, radius: 50),
-        child: ClipPath(
-          clipper: PointedEdgeClipper(points: 60, edge: Edge.left, depth: 5),
-          child: Container(
-            height: 200,
-            width: 200,
-            color: Colors.red,
-          ),
-        ),
-      )),
+          child: TicketClipper(
+            clipper: PointedEdgeClipper(edge: Edge.horizontal,),
+            shadows:  [
+              BoxShadow(
+                color: Colors.grey.shade400,
+                blurRadius: 2,
+                offset: const Offset(15, 15),
+              )
+            ],
+            child: Container(
+              height: 200,
+              width: 200,
+              color: Colors.red,
+            ),
+          )),
     );
   }
+}
+
+class TicketClipper extends StatelessWidget {
+  const TicketClipper({super.key,required this.clipper, this.shadows, required this.child});
+  final CustomClipper<Path> clipper;
+  final Widget child;
+  final List<BoxShadow>? shadows;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      painter: TicketShadowPainter(
+        clipper: clipper,
+        shadows: shadows,
+      ),
+      child: ClipPath(
+        clipper: clipper,
+        child: child),
+    );
+  }
+}
+
+class TicketShadowPainter extends CustomPainter {
+  TicketShadowPainter({
+    required this.clipper,
+    this.shadows
+  });
+
+   final CustomClipper<Path> clipper;
+  final List<BoxShadow>? shadows;
+  @override
+  void paint(Canvas canvas, Size size) {
+      var h = size.height;
+      var w = size.width;
+      if(shadows != null){
+        for(BoxShadow shadow in shadows!){
+          final paint = shadow.toPaint();
+        final spreadRadius = shadow.spreadRadius;
+        final shadowOffset = shadow.offset;
+
+        final spreadSize = Size(w + spreadRadius * 2, h + spreadRadius * 2);
+        final clipPath = clipper.getClip(spreadSize).shift(
+          Offset(shadowOffset.dx - spreadRadius, shadowOffset.dy - spreadRadius),
+        );
+
+        canvas.drawPath(clipPath, paint);
+      }
+      }else{
+        canvas.drawPath(clipper.getClip(size), Paint()..color=Colors.transparent);
+      }
+      
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+  
 }
 
 // My Custom Clipper
